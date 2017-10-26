@@ -1,0 +1,6 @@
+# Everything
+
+config.json
+markov.json
+node_modules/
+.vscode/

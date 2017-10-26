@@ -1,0 +1,5 @@
+{ 
+    "token" : "bot token if using a bot account",
+    "command_prefix" : "!",
+    "owner_id" : "owner id"
+}
