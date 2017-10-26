@@ -9,7 +9,7 @@ const TOKEN = CONFIG['token'];
 const PREFIX = CONFIG['command_prefix'];
 
 // Markov messages
-let MARKOV = require('./commands/markov.json')
+let MARKOV = require('./markov.json')
 
 client.on('ready', () => {
     // Start up procedures
@@ -19,7 +19,10 @@ client.on('ready', () => {
 client.on('message', (message) => {
     // Do nothing if bot and save message if it is not a command
     if (message.author.bot) return;
-    if (!message.content.startsWith(PREFIX)) markov(message); return;
+    if (!message.content.startsWith(PREFIX)) {
+        markov(message); 
+        return;
+    }
 
     // Get command and arguments
     const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
@@ -43,7 +46,7 @@ const markov = (message) => {
     }
 
     let json = JSON.stringify(MARKOV); // Convert to json
-    fs.writeFile('commands/markov.json', json, 'utf8');
+    fs.writeFile('markov.json', json, 'utf8');
     console.log(`Saved ${user}\'s message:\n${message.content}`);
 };
 
