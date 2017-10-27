@@ -8,19 +8,15 @@ const OWNER = CONFIG['owner_id'];
 const TOKEN = CONFIG['token'];
 const PREFIX = CONFIG['command_prefix'];
 
-// Markov messages
-let MARKOV = require('./markov.json')
-
 client.on('ready', () => {
     // Start up procedures
     console.log(`Logged in as ${client.user.username}!`);
 });
 
-client.on('message', (message) => {
-    // Do nothing if bot and save message if it is not a command
+client.on('message', message => {
     if (message.author.bot) return;
     if (!message.content.startsWith(PREFIX)) {
-        markov(message); 
+        swearDetect(message);
         return;
     }
 
@@ -36,18 +32,16 @@ client.on('message', (message) => {
     }
 });
 
-const markov = (message) => {
-    // Pushes message to markov.json
-    user = message.author.id;
-    if (user in MARKOV) {
-        MARKOV[user].push(message.content);
-    } else {
-        MARKOV[user] = [message.content];
+const swearDetect = message => {
+    // Don't swear if you wanna not go to fucking jail kids
+    const swears = ['heck', 'frick', 'darn'];
+    const replies = [
+        'please do not hecking swear',
+        'hey! Don\'t say s-swears'
+    ];
+    if (swears.some(word => message.content.includes(word))) {
+        message.reply(replies[Math.floor(Math.random()*replies.length)]);
     }
-
-    let json = JSON.stringify(MARKOV); // Convert to json
-    fs.writeFile('markov.json', json, 'utf8');
-    console.log(`Saved ${user}\'s message:\n${message.content}`);
 };
 
 client.login(TOKEN);

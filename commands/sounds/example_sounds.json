@@ -1,0 +1,6 @@
+// Add sounds in this folder and give them a name
+{
+    // "name" : "file",
+    // Example
+    "thirst" : "./sounds/thirst.mp3"
+}
