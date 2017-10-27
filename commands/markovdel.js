@@ -8,5 +8,5 @@ exports.run = (client, message, args) => {
     delete MARKOV[user];
     let json = JSON.stringify(MARKOV); // Convert to json
     fs.writeFile('markov.json', json, 'utf8');
-    message.reply(`Your messages have been deleted.`);
+    message.reply(`Your messages have been deleted from the chain.`);
 };
