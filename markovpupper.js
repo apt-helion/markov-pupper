@@ -10,7 +10,7 @@ const PREFIX = CONFIG['command_prefix'];
 client.on('ready', () => {
     // Start up procedures
     let user = client.user;
-    user.setGame("Hacknet");
+    user.setGame(CONFIG['game']);
 
     console.log(`
     Connected!  markov-pupper v0.2.2
@@ -18,6 +18,7 @@ client.on('ready', () => {
 
     Options: 
         Command prefix: ${PREFIX}
+        Game: ${CONFIG['game']}
     `);
 });
 
