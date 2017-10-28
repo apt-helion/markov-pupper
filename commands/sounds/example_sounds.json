@@ -1,6 +1,6 @@
-// Add sounds in this folder and give them a name
+// Add sounds in this folder and give them an argument to call them by
 {
-    // "name" : "file",
-    // Example
+    // "argument/name" : "file",
+    // Example -> !sound thirst
     "thirst" : "./sounds/thirst.mp3"
 }

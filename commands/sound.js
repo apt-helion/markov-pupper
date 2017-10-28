@@ -8,9 +8,9 @@ exports.run = (client, message, args) => {
         return;
     }
 
-    voiceChannel = message.member.voiceChannel;
+    let voiceChannel = message.member.voiceChannel;
     voiceChannel.join().then(connection => {
-        const dispatcher = connection.playFile(SOUNDS[sound]);
+        connection.playFile(SOUNDS[sound]);
     }).catch(err => console.log(err));
     
 };

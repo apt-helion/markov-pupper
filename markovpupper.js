@@ -4,13 +4,21 @@ const fs = require("fs");
 
 // Config stuff
 const CONFIG = require('./config.json');
-const OWNER = CONFIG['owner_id'];
 const TOKEN = CONFIG['token'];
 const PREFIX = CONFIG['command_prefix'];
 
 client.on('ready', () => {
     // Start up procedures
-    console.log(`Logged in as ${client.user.username}!`);
+    let user = client.user;
+    user.setGame("Hacknet");
+
+    console.log(`
+    Connected!  markov-pupper v0.2.2
+    Bot: <@${user.id}>${user.username}#${user.discriminator}
+
+    Options: 
+        Command prefix: ${PREFIX}
+    `);
 });
 
 client.on('message', message => {
